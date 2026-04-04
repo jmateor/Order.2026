@@ -12,6 +12,11 @@ builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer("Name=LocalConnec
 
 var app = builder.Build();
 
+app.UseCors(x => x
+.AllowAnyHeader()
+.SetIsOriginAllowed(origin => true)
+.AllowAnyMethod());
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
