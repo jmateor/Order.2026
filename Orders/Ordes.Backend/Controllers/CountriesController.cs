@@ -7,11 +7,11 @@ namespace Ordes.Backend.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class CoutriesController : ControllerBase
+    public class CountriesController : ControllerBase
     {
         private readonly DataContext _context;
 
-        public CoutriesController(DataContext context)
+        public CountriesController(DataContext context)
         {
             _context = context;
         }
@@ -24,12 +24,12 @@ namespace Ordes.Backend.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAsync(int id)
         {
-            var contry = await _context.Countries.FindAsync(id);
-            if (contry == null)
+            var country = await _context.Countries.FindAsync(id);
+            if (country == null)
             {
                 return NotFound();
             }
-            return Ok(contry);
+            return Ok(country);
         }
 
 
@@ -54,12 +54,12 @@ namespace Ordes.Backend.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
-            var contry = await _context.Countries.FindAsync(id);
-            if (contry == null)
+            var country = await _context.Countries.FindAsync(id);
+            if (country == null)
             {
                 return NotFound();
             }
-            _context.Remove(contry);
+            _context.Remove(country);
             await _context.SaveChangesAsync();
             return NoContent();
         }
